@@ -25,6 +25,7 @@ with sort_adjusted_claims as (
         , dgns_prcdr_icd_ind
         , clm_mdcr_instnl_tot_chrg_amt
         , clm_blg_prvdr_oscar_num
+        , clm_blg_prvdr_npi_num
         , file_name
         , file_date
         , final_action_flag
@@ -84,6 +85,7 @@ with sort_adjusted_claims as (
         , dgns_prcdr_icd_ind
         , clm_mdcr_instnl_tot_chrg_amt
         , clm_blg_prvdr_oscar_num
+        , clm_blg_prvdr_npi_num
         , file_name
         , file_date
     from sort_adjusted_claims
@@ -118,6 +120,7 @@ with sort_adjusted_claims as (
         , filter_claims.dgns_prcdr_icd_ind
         , filter_claims.clm_mdcr_instnl_tot_chrg_amt
         , filter_claims.clm_blg_prvdr_oscar_num
+        , filter_claims.clm_blg_prvdr_npi_num
         , filter_claims.file_name
         , filter_claims.file_date
         , revenue_center.clm_line_num
@@ -421,7 +424,7 @@ with sort_adjusted_claims as (
         , oprtg_prvdr_npi_num as oprtg_prvdr_npi        
         , atndg_prvdr_npi_num as rendering_npi
         , cast(null as {{ dbt.type_string() }} ) as rendering_tin
-        , cast(null as {{ dbt.type_string() }} ) as billing_npi
+        , clm_blg_prvdr_npi_num as billing_npi
         , cast(null as {{ dbt.type_string() }} ) as billing_tin
         , fac_prvdr_npi_num as facility_npi
         , case

@@ -156,7 +156,7 @@ with staged_data as (
         /*, clm_hipps_uncompd_care_amt*/
         /*, clm_oprtnl_dsprprtnt_amt*/
         , clm_blg_prvdr_oscar_num
-        /*, clm_blg_prvdr_npi_num*/
+        , clm_blg_prvdr_npi_num
         /*, clm_oprtg_prvdr_npi_num*/
         /*, clm_atndg_prvdr_npi_num*/
         /*, clm_othr_prvdr_npi_num*/
@@ -432,6 +432,7 @@ with staged_data as (
             else {{ try_to_cast_numeric('clm_mdcr_instnl_tot_chrg_amt') }}
           end as clm_mdcr_instnl_tot_chrg_amt
         , clm_blg_prvdr_oscar_num
+        , clm_blg_prvdr_npi_num
         , file_name
         , file_date
         , case
@@ -468,6 +469,7 @@ select
     , dgns_prcdr_icd_ind
     , clm_mdcr_instnl_tot_chrg_amt
     , clm_blg_prvdr_oscar_num
+    , clm_blg_prvdr_npi_num
     , file_name
     , file_date
     , final_action_flag
